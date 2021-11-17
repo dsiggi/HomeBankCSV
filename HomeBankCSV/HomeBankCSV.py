@@ -43,6 +43,18 @@ class HomeBankCSV(object):
                 # Die komplette Datei wird eingelesen und in einen String gespeichert
                 for l in openFile:
                     self.daten = self.daten + l
+                    
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        try:
+            out = self.daten.splitlines()[self.line]
+            self.line += 1
+            return out
+        except IndexError:
+            self.line = 0
+            raise StopIteration
 
     def Convert2CSV(self):
         """
