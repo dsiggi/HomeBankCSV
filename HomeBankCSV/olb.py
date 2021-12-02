@@ -16,3 +16,8 @@ class olb(HomeBankCSV):
         "ENCODING": "latin1"
     }
 
+    def get_typ(self, val):
+        """
+        Gibt nun als Typ immer "Lastschrift" zurück.
+        """
+        return "11"
