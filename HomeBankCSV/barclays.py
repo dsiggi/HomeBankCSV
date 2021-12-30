@@ -33,7 +33,11 @@ class barclays(HomeBankCSV):
                 if str(l[i].value) == 'None':
                     col = '""'
                 else:
-                    col = '"' + str(l[i].value) + '"'
+                    if i == self.CONV["BETRAG"]:
+                        ## Tausender Trennzeichen entfernen
+                        col = '"' + str(l[i].value).replace(".", "") + '"'
+                    else:
+                        col = '"' + str(l[i].value) + '"'
                 if i == len(l) - 1:
                     csv = csv + col
                 else:
