@@ -1,4 +1,5 @@
 from .HomeBankCSV import HomeBankCSV
+from datetime import date, datetime
 
 class n26(HomeBankCSV):
     CONV={
@@ -37,4 +38,10 @@ class n26(HomeBankCSV):
             return "3"
         else:
             return "0"
+
+    def get_date(self, val):
+        """
+        Wandelt das Datum in ein anderes Format um
+        """
+        return datetime.strftime(datetime.strptime(val[self.CONV["DATUM"]], "%Y-%M-%d"), "%d.%M.%Y")
 

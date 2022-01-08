@@ -80,14 +80,14 @@ class HomeBankCSV(object):
             # Aufruf aller nötigen Funktionen zum Bilden der CSV-Datei
             # Aufbau der Zeilen:
             # [DATUM] [TYP] [INFO] [EMPFÄNGER] [VERWENDUNGSZWECK] [BETRAG] [KATEGORIE] [TAGS]
-            self.new_csv.append([line[self.CONV["DATUM"]], \
-                                        self.get_typ(line), \
-                                        "", \
-                                        self.get_empf(line), \
-                                        self.get_vwz(line), \
-                                        self.get_betrag(line), \
-                                        self.get_kat(line), \
-                                        ""])
+            self.new_csv.append([   self.get_date(line), \
+                                    self.get_typ(line), \
+                                    "", \
+                                    self.get_empf(line), \
+                                    self.get_vwz(line), \
+                                    self.get_betrag(line), \
+                                    self.get_kat(line), \
+                                    ""])
 
     def get_typ(self, val):
         """ 
@@ -151,6 +151,12 @@ class HomeBankCSV(object):
             betrag = str(float(betrag) / -1.0)
 
         return betrag
+
+    def get_date(self, val):
+        """
+        Wandelt das Datum in ein anderes Format um
+        """
+        return val[self.CONV["DATUM"]]
 
     def save(self, file):
         """
