@@ -27,15 +27,18 @@ class bankofscotland(HomeBankCSV):
         sh = xls.sheet_by_index(0)
         csv = ""
         coll=0
-        
+
         for row in range(sh.nrows):
             for col in range(sh.ncols):
                 if coll == self.CONV["VWZ"]:
                     csv = csv + '"'
-                    for item in sh.cell_value(rowx=row, colx=col).splitlines():
-                        csv = csv + item + " - "
+                    # Nur abarbeiten wenn auch ein VWZ vorhanden ist,
+                    # ansonsten wird die Spalte abgeschloßen
+                    if sh.cell_value(rowx=row, colx=col).splitlines():
+                        for item in sh.cell_value(rowx=row, colx=col).splitlines():
+                            csv = csv + item + " - "
 
-                    csv = csv[:-3]
+                        csv = csv[:-3]
                     csv = csv + '"' + ","
                 else:
                     csv = csv + '"' + str(sh.cell_value(rowx=row, colx=col)) + '"' + ','
