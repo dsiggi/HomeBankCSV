@@ -150,6 +150,10 @@ class HomeBankCSV(object):
         if self.CONV["BETRAG_UMRECHNEN"]:
             betrag = str(float(betrag) / -1.0)
 
+        # Prüfe ob der Betrag nun 2 Punkte aufweist
+        if betrag.count(".") > 1:
+            betrag = betrag.replace(".", "", 1)  
+
         return betrag
 
     def get_date(self, val):
