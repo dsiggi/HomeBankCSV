@@ -13,7 +13,7 @@ class n26(HomeBankCSV):
         "BETRAG_SEPERATOR": False,
         "BETRAG_UMRECHNEN": False,
         "ERSTE_ZEILE": 2,
-        "CONVERT": None,
+        "CONVERT": False,
         "ENCODING": "utf-8"
     }
 

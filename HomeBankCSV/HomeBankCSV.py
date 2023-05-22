@@ -18,7 +18,7 @@ class HomeBankCSV(object):
         "BETRAG_SEPERATOR": False,  # Muss der Seperator des Betrags umgewandelt werden? Nötig wenn der Betrag im original durck ein Komma getrennt ist
         "BETRAG_UMRECHNEN": False,  # Muss der Betrag umgerechnet werden? Nötig wenn der Betrag positiv/negativ im original steht aber negativ/positiv sein sollte
         "ERSTE_ZEILE": 2,   # Erste Zeile mit Daten
-        "CONVERT": None,    # Muss aus einem fremden Format (z.b. xlst) konvertiert werden? Hier wird das nötige python modul eingetragen
+        "CONVERT": False,    # Muss aus einem fremden Format (z.b. xlst) konvertiert werden?
         "ENCODING": "utf-8" # Encoding mit dem die CSV-Datei geöffnet wird
     }
 
@@ -35,8 +35,7 @@ class HomeBankCSV(object):
 
         # Wenn CONVERT nicht None dann wird das passende modul als self.convert_module initalisiert
         # ansonsten wird die CSV-Datei geladen
-        if self.CONV["CONVERT"] is not None:
-            self.convert_module = __import__(self.CONV["CONVERT"])
+        if self.CONV["CONVERT"] is True:
             self.daten = self.Convert2CSV()
         else:
             with open(file, newline="", encoding=self.encoding) as openFile:

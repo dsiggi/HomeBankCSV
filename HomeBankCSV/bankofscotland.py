@@ -1,4 +1,5 @@
 from .HomeBankCSV import HomeBankCSV
+import xlrd
 
 class bankofscotland(HomeBankCSV):
     CONV={
@@ -12,7 +13,7 @@ class bankofscotland(HomeBankCSV):
         "BETRAG_SEPERATOR": False,
         "BETRAG_UMRECHNEN": False,
         "ERSTE_ZEILE": 2,
-        "CONVERT": 'xlrd',
+        "CONVERT": True,
         "ENCODING": "utf-8"
     }
 
@@ -22,7 +23,7 @@ class bankofscotland(HomeBankCSV):
         In diesem Fall von XLS zu CSV.
         """
         ## Excel Date öffnen
-        xls = self.convert_module.open_workbook(self.file)
+        xls = xlrd.open_workbook(self.file)
         # Blatt öffnen
         sh = xls.sheet_by_index(0)
         csv = ""

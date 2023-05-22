@@ -12,7 +12,7 @@ class lbb(HomeBankCSV):
         "BETRAG_SEPERATOR": True,
         "BETRAG_UMRECHNEN": True,
         "ERSTE_ZEILE": 3,
-        "CONVERT": None,
+        "CONVERT": False,
         "ENCODING": "utf-8"
     }
 

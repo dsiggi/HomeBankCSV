@@ -1,4 +1,5 @@
 from .HomeBankCSV import HomeBankCSV
+import openpyxl
 
 class barclays(HomeBankCSV):
     CONV={
@@ -12,7 +13,7 @@ class barclays(HomeBankCSV):
         "BETRAG_SEPERATOR": True,
         "BETRAG_UMRECHNEN": False,
         "ERSTE_ZEILE": 14,
-        "CONVERT": 'openpyxl',
+        "CONVERT": True,
         "ENCODING": "utf-8"
     }
 
@@ -22,7 +23,7 @@ class barclays(HomeBankCSV):
         In diesem Fall von XLSX zu CSV.
         """
         ## Excel Date öffnen
-        xlsx = self.convert_module.load_workbook(self.file)
+        xlsx = openpyxl.load_workbook(self.file)
         ## Auf aktuelles Blatt wechseln und die Spalten öffnen
         data = xlsx.active.rows
         csv=""

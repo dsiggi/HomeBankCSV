@@ -12,7 +12,7 @@ class olb(HomeBankCSV):
         "BETRAG_SEPERATOR": True,
         "BETRAG_UMRECHNEN": False,
         "ERSTE_ZEILE": 2,
-        "CONVERT": None,
+        "CONVERT": False,
         "ENCODING": "latin1"
     }
 
