@@ -8,6 +8,7 @@ Folgende Banken werden bis jetzt unterstützt:
 - Landes Bank Berlin (Amazon Kreditkarte)
 - n26
 - OLB
+- n26_pdf (PDF Kontoauszug für Spaces)
 
 Die Klasse HomeBankCSV bildet die Grundlagen um weitere Banken hinzuzufügen.
 
@@ -22,6 +23,7 @@ lbb = lbb.lbb("Download/lbb.csv")
 barclays = barclays.barclays("Download/barclays.xlsx")
 olb = olb.olb("Download/olb.csv")
 bankofscotland = bankofscotland.bankofscotland("Download/bos.xls")
+n26_pdf = n26_pdf.n26("Downloads/n26_pdf.pdf")
 
 # Speichern der Transaktionen im passenden Format für HomeBank
 n26.save("n26.csv")
@@ -29,6 +31,7 @@ lbb.save("lbb.csv")
 barclays.save("barclays.csv")
 olb.save("olb.csv")
 bankofscotland.save("bos.csv")
+n26_pdf.save("n26_pdf.csv")
 ```
 
 
