@@ -48,10 +48,15 @@ class n26(HomeBankCSV):
 
         csv =""
         act_page=0
-        # Lese alle Seiten außer die letzten beiden
-        while act_page < len(reader.pages) - 2:
+
+        while act_page < len(reader.pages):
             page = reader.pages[act_page]
             data = page.extract_text()
+
+            # Wenn die Seite den Text nicht enthält, ist sie nicht wichtig für uns
+            if not 'Space Kontoauszug' in data:
+                act_page += 1
+                continue
 
             # Lese die Daten in ein Array ein
             lines = []
